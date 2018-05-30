@@ -1,0 +1,42 @@
+https://javadoc.pentaho.com/bi-platform810/ Pentaho Platform 8.1.0.0 Javadocs
+https://javadoc.pentaho.com/kettle810/ Pentaho Data Integration (Kettle) 8.1.0.0 Javadoc
+https://javadoc.pentaho.com/mondrian810/ Pentaho Community Edition Project: mondrian 8.1.0.0-365 API
+
+
+https://help.pentaho.com/Documentation/8.1/Setup/Configuration/Hadoop_Clusters
+https://wiki.pentaho.com/display/BAD/Configuring+Pentaho+for+your+Hadoop+Distro+and+Version
+
+
+//Compatibilidade pentaho
+https://help.pentaho.com/Documentation/8.1/Setup/Components_Reference#Big_Data_Sources
+
+
+
+
+    Home Documentation 8.1 Setup Pentaho Configuration 
+
+Configure the Design Tools and Utilitie
+https://help.pentaho.com/Documentation/8.1/Setup/Configuration/Design_Tools_and_Utilities
+
+
+
+    Home Documentation 8.1 Setup Pentaho Configuration 
+
+Manage Users and Roles in the PDI Client
+https://help.pentaho.com/Documentation/8.1/Setup/Configuration/Manage_Users_and_Roles_in_the_PDI_Client
+
+
+
+    Home Documentation 8.1 Setup Pentaho Configuration 
+
+Configure the Pentaho Server
+https://help.pentaho.com/Documentation/8.1/Setup/Configuration/Pentaho_Server
+
+
+
+
+
+    Home Documentation 8.1 Setup Pentaho Configuration 
+
+Set Up the Adaptive Execution Layer (AEL)
+https://help.pentaho.com/Documentation/8.1/Setup/Configuration/Adaptive_Execution_Layer
