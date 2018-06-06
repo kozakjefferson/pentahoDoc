@@ -1,4 +1,5 @@
 import models.mysqlconnection as mysql
+import pymysql.cursors
 from datetime import datetime
 
 format = '%Y-%m-%d %H:%M:%S'
@@ -56,14 +57,19 @@ def insert_products(id_produto, id_categoria, id_nivel_1, id_nivel_2, id_nivel_3
     conm = mysql.openConMysql()
     sqlInsertComissaoSellerQuery = '''
             INSERT INTO cubo.WM_PRODUTOS
-            (ID_COMISSAO, ID_PRODUTO,ID_NIVEL_1, ID_NIVEL_2, ID_NIVEL_3, ID_NIVEL_4, ID_NIVEL_5, ID_NIVEL_6, ID_NIVEL_7, NOME, DESCRICAO, EAN, MARCA, PRECO_DE, PRECO_POR, ALTURA,LARGURA, PROFUNDIDADE, PESO, STATUS, DATAHORA_CRIACAO, DATAHORA_ALTERACAO)
+            (ID_PRODUTO, ID_CATEGORIA, ID_NIVEL_1, ID_NIVEL_2, ID_NIVEL_3, ID_NIVEL_4, ID_NIVEL_5, ID_NIVEL_6, ID_NIVEL_7, NOME, DESCRICAO, EAN, MARCA, PRECO_DE, PRECO_POR, ALTURA,LARGURA, PROFUNDIDADE, PESO, STATUS, DATAHORA_CRIACAO, DATAHORA_ALTERACAO)
             VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);'''
     cur = conm.cursor()
-    cur.execute(sqlInsertComissaoSellerQuery, (id_produto, id_categoria, id_nivel_1, id_nivel_2, id_nivel_3,
-                                               id_nivel_4, id_nivel_5, id_nivel_6, id_nivel_7, nome, descricao,
-                                               ean, marca, preco_de, preco_por, altura, largura, profundidade,
-                                               peso, status, datahora_criacao, datahora_alteracao))
-    conm.commit()
+    try:
+        cur.execute(sqlInsertComissaoSellerQuery, (id_produto, id_categoria, id_nivel_1, id_nivel_2, id_nivel_3,
+                                                   id_nivel_4, id_nivel_5, id_nivel_6, id_nivel_7, nome, descricao,
+                                                   ean, marca, preco_de, preco_por, altura, largura, profundidade,
+                                                   peso, status, datahora_criacao, datahora_alteracao))
+        conm.commit()
+    except:
+        print("Error: unable to fecth data:", id_produto)
+        conm.rollback()
+
     conm.close()
 
 

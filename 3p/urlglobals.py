@@ -8,7 +8,7 @@ url_MM_Api = "https://war-machine.madeiramadeira.com.br/v1/store/produto/updates
 tokenMM = "TOKEN_MM_123"
 
 
-def setParamBuscaProdutos(dataInicio, dataFim, limit=2000, offset=6000):
+def setParamBuscaProdutos(dataInicio, dataFim, limit=2000, offset=0):
     url = url_MM_Api.format(dataInicio, dataFim, limit, offset)
     return url
 

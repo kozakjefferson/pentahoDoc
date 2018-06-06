@@ -23,8 +23,6 @@ def getproducts(url_products):
 
     total = int(get_total_objects(json_obj))
     print("Total de Produtos ", total)
-    for idx in range(1, total):
-        print(idx)
     counter = 0
 
     for data in json_obj["data"]:
@@ -39,7 +37,7 @@ def getproducts(url_products):
         id_nivel_5 = int(data["id_nivel_5"])
         id_nivel_6 = int(data["id_nivel_6"])
         id_nivel_7 = int(data["id_nivel_7"])
-        nome = data["nome"]
+        nome = str(data["nome"]).encode('latin-1', 'ignore')
         descricao = "null"
         ean = data["ean"]
         marca = data["marca"]
@@ -59,7 +57,7 @@ def getproducts(url_products):
                             peso, status, datahora_criacao, datahora_alteracao)
 
         for dtl in data["slug"]:
-            print(str(dtl))
+            print("SLUG:", str(dtl))
             idlistagemurl = dtl["idlistagemurl"]
             url_listagem = dtl["url_listagem"]
             fornecedor_id = dtl["fornecedor_id"]
@@ -74,19 +72,21 @@ def getproducts(url_products):
             departamento = dtl["departamento"]
             departamento_slug = dtl["departamento_slug"]
             id_depdep_pai = dtl["id_depdep_pai"]
-            google_product_category = dtl["google_product_category"]
+            google_product_category = "null"
 
-            dao.insert_slug(id_produto,idlistagemurl, url_listagem, fornecedor_id,
+            dao.insert_slug(id_produto, idlistagemurl, url_listagem, fornecedor_id,
                             departamento_id, tipo_url, nome_amigavel, ordem, breadcrumb, top_menu,
                             id_depdep, departamento, departamento_slug, id_depdep_pai,
                             google_product_category, categoria_id)
+            #print(str(dtl["buyBox"]))
             for dtbuybox in data["buyBox"]:
-                print("buybox:", dtbuybox[0])
+                print(len(dtbuybox))
+                #print("buybox:", dtbuybox[buyBox]["id_seller"])
                 #id_seller = dtbuybox["id_seller"]
                 #preco_de = dtbuybox["preco_de"]
                 #print(id_seller, preco_de)
         print('---------------------------- ')
-
+    return total
 
 def GetAllTotalSellers():
     c = 0

@@ -4,6 +4,7 @@ import pymysql
 
 def openConMysql():
     con = pymysql.connect(settings.HOST["host"], settings.HOST["user"], settings.HOST["passwd"], settings.HOST["db"])
+
     return con
 
 
