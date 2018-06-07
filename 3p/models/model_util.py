@@ -12,11 +12,19 @@ def get_total_objects(jsonObject):
     count = meta["count"]
     return count
 
+def get_pedidos(url_pedidos):
+    print(url_pedidos, url.header_mm)
+    lista_pedidos = requests.get(url_pedidos, headers=url.header_mm)
+    ped=js.JSONDecoder(lista_pedidos, strict=False)
+    json_obj = ped.parse_array
+    for data in json_obj["data"]:
+        print("BuscaPedidosWM")
+
 
 def getproducts(url_products):
 
-    print(url_products, url.header_MM_Produtos)
-    listaprodutos = requests.get(url_products, headers=url.header_MM_Produtos)
+    print(url_products, url.header_mm)
+    listaprodutos = requests.get(url_products, headers=url.header_mm)
     print(listaprodutos)
     r2d = js.dumps(listaprodutos.json())
     json_obj = js.loads(r2d)
@@ -96,7 +104,7 @@ def GetAllTotalSellers():
     id = []
     while c < 3000:
         c += 1
-        r = requests.get(url.url_MM_Api_Id_Seller + str(c), headers=url.header_MM_id_Seller)
+        r = requests.get(url.url_MM_Api_Id_Seller + str(c), headers=url.header_mm)
         if r.status_code > 200:
 
             err.append(r.url)
@@ -148,7 +156,7 @@ def getComissaoFromSeller(sellers):
     input("debug")
     for id in idSeller:
 
-        dataSeller = requests.get(url.url_MM_Api_Comissao + str(id), headers=url.header_MM_Comissao)
+        dataSeller = requests.get(url.url_MM_Api_Comissao + str(id), headers=url.header_mm)
         jsd = js.dumps(dataSeller.json())
         json_obj = js.loads(jsd)
 
