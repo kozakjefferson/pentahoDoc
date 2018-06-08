@@ -8,23 +8,20 @@ url_wm_api_produtos = "https://war-machine.madeiramadeira.com.br/v1/store/produt
 tokenMM = "TOKEN_MM_123"
 
 
-def setParamBusca(dataInicio, dataFim, limit=2000, offset=0, tipo={"produto", "pedido"}):
-    if(tipo == "produto"):
-        url = url_wm_api_produtos.format(dataInicio, dataFim, limit, offset)
-    elif(tipo == "pedido"):
-        url = url_wm_api_pedidos.format(dataInicio, dataFim, limit, offset)
-    return url
+def setParamBusca(url,dataInicio, dataFim, limit=2000, offset=0):
+    url_formated = url.format(dataInicio, dataFim, limit, offset)
+    return url_formated
 
 
 header_mm = {"Cache-Control": "no-cache", "Postman-Token": tokenProdutos, "TOKENMM": tokenMM}
 
-url_MM_Api_Comissao = "https://war-machine.madeiramadeira.com.br/v1/comissao/"
+wm_api_comissao = "https://war-machine.madeiramadeira.com.br/v1/comissao/"
 
 
-url_MM_Api_Id_Seller = " https://war-machine.madeiramadeira.com.br/v1/seller/"
+mm_api_id_seller = " https://war-machine.madeiramadeira.com.br/v1/seller/"
 
 
-url_wm_api_pedidos= "https://war-machine.madeiramadeira.com.br/v1/pedido/from={}&to={}&limit={}&offset={}"
+wm_api_pedidos= "https://war-machine.madeiramadeira.com.br/v1/pedido/from={}&to={}&limit={}&offset={}"
 
 
 """GET /v1/store/produto/updates/date_from=2010-01-01&amp;date_to=2018-05-01&amp;limit=4000&amp;offset=4000 HTTP/1.1
